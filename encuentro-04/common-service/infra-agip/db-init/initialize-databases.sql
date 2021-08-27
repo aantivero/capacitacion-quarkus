@@ -1,0 +1,1 @@
+CREATE ROLE agip WITH LOGIN PASSWORD 'agip';
