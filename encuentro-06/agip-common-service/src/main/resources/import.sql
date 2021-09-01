@@ -1,0 +1,2 @@
+INSERT INTO impuestos(id, nombre, descripcion) VALUES (nextval('hibernate_sequence'), 'automotor', 'descripcion automotor');
+INSERT INTO impuestos(id, nombre, descripcion) VALUES (nextval('hibernate_sequence'), 'inmobiliario', 'descripcion inmobiliario');

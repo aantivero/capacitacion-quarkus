@@ -10,6 +10,7 @@
 
     <modules>
         <module>encuentro-04/common-service</module>
+        <module>encuentro-06/agip-common-service</module>
     </modules>
 
 </project>
