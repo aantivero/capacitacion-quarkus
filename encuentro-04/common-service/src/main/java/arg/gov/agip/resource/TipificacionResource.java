@@ -25,8 +25,8 @@ public class TipificacionResource {
 
     @GET
     public Response getAllTipificaciones() {
-        List<Tipificacion> tipificacions = tipificacionService.findAll();
-        return Response.ok(tipificacions).build();
+        List<Tipificacion> tipificaciones = tipificacionService.findAll();
+        return Response.ok(tipificaciones).build();
     }
 
     @GET
@@ -45,7 +45,7 @@ public class TipificacionResource {
     public Response createTipificacion(
             @Valid Tipificacion tipificacion, @Context UriInfo uriInfo) {
         tipificacion = tipificacionService.persistTipificacion(tipificacion);
-        UriBuilder builder = uriInfo.getAbsolutePathBuilder().path(Long.toString(tipificacion.id));
+        UriBuilder builder = uriInfo.getAbsolutePathBuilder().path(Long.toString(tipificacion.id));// devuelve /api/agip/common/tipificacion/123
         return Response.created(builder.build()).build();
     }
 

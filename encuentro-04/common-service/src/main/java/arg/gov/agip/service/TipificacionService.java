@@ -33,6 +33,7 @@ public class TipificacionService {
     }
 
     public Tipificacion updateTipificacion(@Valid Tipificacion tipificacion) {
+        //TODO mapper objeto -> persistence + validator
         Tipificacion entity = Tipificacion.findById(tipificacion.id);
         entity.codigo = tipificacion.codigo;
         entity.descripcion = tipificacion.descripcion;
