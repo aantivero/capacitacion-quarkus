@@ -5,7 +5,7 @@
   <groupId>ar.gov.agip</groupId>
   <artifactId>agip-common-service</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <name>Capacitación Quarkus :: AGIP Common Service </name>
+  <name>Capacitación Quarkus :: AGIP Common Service</name>
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <maven.compiler.parameters>true</maven.compiler.parameters>
@@ -34,8 +34,6 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
     </dependency>
-
-    <!-- Dependencias RESTEasy Reactive -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-reactive</artifactId>
@@ -44,20 +42,18 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
     </dependency>
-
-    <!-- Depedencias Hibernate ORM Panache Reactive -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-hibernate-reactive-panache</artifactId>
     </dependency>
-
-    <!-- Hibernate ORM Reactive utiliza reactive-pg-client PostgreSQL -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-reactive-pg-client</artifactId>
     </dependency>
-
-    <!-- Dependencias TEST -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-openapi</artifactId>
+    </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
