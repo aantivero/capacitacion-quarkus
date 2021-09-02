@@ -22,6 +22,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
+import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.reactive.RestPath;
 
@@ -41,6 +42,7 @@ public class ImpuestoResource {
 
     private static final Logger LOGGER = Logger.getLogger(ImpuestoResource.class.getName());
 
+    @Operation(summary = "Obtener todos los impuestos")
     @GET
     public Uni<List<Impuesto>> get() {
         return Impuesto.listAll(Sort.by("nombre"));
