@@ -54,6 +54,13 @@ public class ImpuestoResource {
         return Impuesto.findById(id);
     }
 
+    @Operation(summary = "Obtener impuesto por nombre")
+    @GET
+    @Path("/nombre/{nombre}")
+    public Uni<Impuesto> getByNombre(@RestPath String nombre) {
+        return Impuesto.findByNombre(nombre);
+    }
+
     @POST
     public Uni<Response> create(Impuesto impuesto) {
         if (impuesto == null || impuesto.id != null) {
