@@ -12,13 +12,20 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
+// Métricas
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Timed;
+
 @Path("/api")
 public class ApiResource {
 
     @Inject
-    @RestClient
-    ImpuestoService impuestoService;
+    ApiService apiService;
 
+    // Métricas
+    @Counted(name = "countGetCheckApi", description = "Cuenta la cantidad de veces que se ha invocado el método checkApi.")
+    @Timed(name = "timeGetCheckApi", description = "Cuanto Tiempo se tarda en invocar al método checkApi", unit = MetricUnits.MILLISECONDS)
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String checkApi() {
@@ -26,17 +33,19 @@ public class ApiResource {
     }
 
 
+    @Counted(name = "countByNombre", description = "Cuenta la cantidad de veces que se ha invocado el método byNombre.")
+    @Timed(name = "timeByNombre", description = "Cuanto Tiempo se tarda en invocar al método byNombre", unit = MetricUnits.MILLISECONDS)
     @GET
     @Path("/impuesto/nombre/{nombre}")
     @Produces(MediaType.APPLICATION_JSON)
     public Impuesto byNombre(@PathParam String nombre) {
-        return impuestoService.getByNombre(nombre);
+        return apiService.getImpuestoByNombre(nombre);
     }
 
     @GET
     @Path("/impuesto/id/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Impuesto byId(@PathParam Long id) {
-        return impuestoService.getById(id);
+        return apiService.getImpuestoById(id);
     }
 }
