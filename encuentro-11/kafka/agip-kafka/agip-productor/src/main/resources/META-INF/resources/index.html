@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Impuestos</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly-additions.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Impuestos</h2>
+            <button class="btn btn-info" id="request-impuesto">Solicitud Impuesto</button>
+            <div class="impuestos"></div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $("#request-impuesto").click((event) => {
+        fetch("/impuestos/request", {method: "POST"})
+        .then(res => res.text())
+        .then(nombreid => {
+            var row = $(`<h4 class='col-md-12' id='${nombreid}'>Impuesto # <i>${nombreid}</i> | <strong>Procesando</strong></h4>`);
+            $(".impuestos").prepend(row);
+        });
+    });
+
+    var source = new EventSource("/impuestos");
+    source.onmessage = (event) => {
+      var json = JSON.parse(event.data);
+      $(`#${json.nombre}`).html((index, html) => {
+        return html.replace("Procesando", `\Taza: %\xA0${json.taza}`);
+      });
+    };
+</script>
+</html>

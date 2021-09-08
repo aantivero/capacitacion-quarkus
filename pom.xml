@@ -13,6 +13,8 @@
         <module>encuentro-06/agip-common-service</module>
         <module>encuentro-08/rest-client</module>
         <module>encuentro-09/quarkus-spring</module>
+        <module>encuentro-11/jms/agip-jms</module>
+        <module>encuentro-11/kafka/agip-kafka</module>
     </modules>
 
 </project>
